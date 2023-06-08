@@ -86,7 +86,7 @@ func (s *service) GetClusters(opts ...baseService.OpOption) ([]*cluster.Cluster,
 		if err != nil {
 			continue
 		}
-		
+
 		_, err = s.getClusterNodeInfo(clientSet)
 		if err != nil {
 			logger.Warn(err)
