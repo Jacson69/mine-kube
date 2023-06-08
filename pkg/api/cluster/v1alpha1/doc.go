@@ -1,4 +1,4 @@
 // +k8s:deepcopy-gen=package
-// +groupName=crd.muti-kube.com
+// +groupName=crd.mine-kube.com
 
 package v1alpha1

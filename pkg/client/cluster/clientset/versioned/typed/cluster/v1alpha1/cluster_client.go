@@ -30,7 +30,7 @@ type CrdV1alpha1Interface interface {
 	ClustersGetter
 }
 
-// CrdV1alpha1Client is used to interact with features provided by the crd.muti-kube.com group.
+// CrdV1alpha1Client is used to interact with features provided by the crd.mine-kube.com group.
 type CrdV1alpha1Client struct {
 	restClient rest.Interface
 }
