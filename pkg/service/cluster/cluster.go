@@ -176,7 +176,6 @@ func (s *service) GetKubernetesClientSet(clusterID string) (k8s.Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	logger.Info(tmpFile.Name())
 	config, err := clientcmd.BuildConfigFromFlags("", tmpFile.Name())
 	if err != nil {
 		return nil, err
