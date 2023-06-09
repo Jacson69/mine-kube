@@ -114,7 +114,6 @@ func (s *service) GetCluster(clusterID string, opts ...baseService.OpOption) (*c
 	if err != nil {
 		return nil, err
 	}
-	logger.Info(clusterData.Name)
 	clientSet, err := s.GetKubernetesClientSet(clusterData.Name)
 	if err != nil {
 		return nil, err
@@ -161,10 +160,10 @@ func (s *service) CreateCluster(clusterPost *cluster.Post) (*cluster.Cluster, er
 
 // GetKubernetesClientSet Get the kubernetes native clientSet
 func (s *service) GetKubernetesClientSet(clusterID string) (k8s.Client, error) {
-	_, err := s.clustersClient.List(s.ctx, metav1.ListOptions{})
-	if err != nil {
-		return nil, err
-	}
+	//_, err := s.clustersClient.List(s.ctx, metav1.ListOptions{})
+	//if err != nil {
+	//	return nil, err
+	//}
 	clusterItem, err := s.clustersClient.Get(s.ctx, clusterID, metav1.GetOptions{})
 	if err != nil {
 		return nil, err
@@ -177,6 +176,7 @@ func (s *service) GetKubernetesClientSet(clusterID string) (k8s.Client, error) {
 	if err != nil {
 		return nil, err
 	}
+	logger.Info(tmpFile.Name())
 	config, err := clientcmd.BuildConfigFromFlags("", tmpFile.Name())
 	if err != nil {
 		return nil, err
