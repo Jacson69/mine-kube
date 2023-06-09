@@ -8,4 +8,4 @@ settings:
     maxage: 30
     maxbackups: 300
     maxsize: 10240
-    path: /var/log/muti-kube/api.log
+    path: /var/log/mine-kube/api.log

@@ -114,6 +114,7 @@ func (s *service) GetCluster(clusterID string, opts ...baseService.OpOption) (*c
 	if err != nil {
 		return nil, err
 	}
+	logger.Info(clusterData)
 	clientSet, err := s.GetKubernetesClientSet(clusterData.Name)
 	if err != nil {
 		return nil, err
