@@ -35,6 +35,7 @@ func newPod() (*podService, error) {
 	}
 	return &podService{
 		client: client.Kubernetes(),
+		ctx:    context.Background(),
 	}, nil
 }
 
@@ -59,7 +60,7 @@ func (ps *podService) CreatePod(namespace string, podPost coreModels.PodPost) (*
 		},
 		Spec: podPost.Spec,
 	}
-	pod, err := ps.client.CoreV1().Pods(namespace).Create(context.Background(), createPod, metav1.CreateOptions{})
+	pod, err := ps.client.CoreV1().Pods(namespace).Create(ps.ctx, createPod, metav1.CreateOptions{})
 	if err != nil {
 		return nil, err
 	}
