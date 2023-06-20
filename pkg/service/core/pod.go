@@ -9,7 +9,6 @@ import (
 	"mine-kube/pkg/client/k8s"
 	baseService "mine-kube/pkg/service"
 	"mine-kube/pkg/util"
-	"mine-kube/pkg/util/logger"
 )
 
 type podService struct {
@@ -54,14 +53,13 @@ func (ps *podService) GetPodList(namespace string, opts ...baseService.OpOption)
 }
 
 func (ps *podService) CreatePod(namespace string, podPost coreModels.PodPost) (*v1.Pod, error) {
-	logger.Info(podPost.Name)
 	createPod := &v1.Pod{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: podPost.Name,
 		},
 		Spec: podPost.Spec,
 	}
-	pod, err := ps.client.CoreV1().Pods(namespace).Create(ps.ctx, createPod, metav1.CreateOptions{})
+	pod, err := ps.client.CoreV1().Pods(namespace).Create(context.Background(), createPod, metav1.CreateOptions{})
 	if err != nil {
 		return nil, err
 	}
