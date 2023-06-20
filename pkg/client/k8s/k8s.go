@@ -1,6 +1,7 @@
 package k8s
 
 import (
+	"mine-kube/pkg/util/logger"
 	"strings"
 
 	promresourcesclient "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
@@ -70,6 +71,7 @@ func NewKubernetesClient(options *KubernetesOptions) (client Client, err error) 
 	}
 
 	var config *rest.Config
+	logger.Info(options.KubeConfig)
 	if config, err = clientcmd.BuildConfigFromFlags("", options.KubeConfig); err != nil {
 		return
 	}

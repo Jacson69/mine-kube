@@ -2,7 +2,6 @@ package core
 
 import (
 	"context"
-	"errors"
 	v1 "k8s.io/api/core/v1"
 	"mine-kube/pkg/client/k8s"
 	baseService "mine-kube/pkg/service"
@@ -30,7 +29,6 @@ func NewPod() (PodInterface, error) {
 func newPod() (*podService, error) {
 	client, err := k8s.NewKubernetesClient(&k8s.KubernetesOptions{KubeConfig: "~/.kube/config"})
 	if err != nil {
-		err = errors.New("xxxxxxxxxxxxxx")
 		return nil, err
 	}
 	return &podService{
