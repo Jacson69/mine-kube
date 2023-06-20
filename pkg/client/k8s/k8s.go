@@ -71,8 +71,8 @@ func NewKubernetesClient(options *KubernetesOptions) (client Client, err error) 
 	}
 
 	var config *rest.Config
+	logger.Info(options.KubeConfig)
 	if config, err = clientcmd.BuildConfigFromFlags("", options.KubeConfig); err != nil {
-		logger.Info("xxxxxxxxxxxxxxxxx")
 		return
 	}
 	config.QPS = options.QPS

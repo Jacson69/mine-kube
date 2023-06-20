@@ -3,6 +3,7 @@ package core
 import (
 	"context"
 	v1 "k8s.io/api/core/v1"
+	"k8s.io/client-go/tools/clientcmd"
 	"mine-kube/pkg/client/k8s"
 	baseService "mine-kube/pkg/service"
 	"mine-kube/pkg/util"
@@ -27,7 +28,8 @@ func NewPod() (PodInterface, error) {
 	return newPod()
 }
 func newPod() (*podService, error) {
-	client, err := k8s.NewKubernetesClient(&k8s.KubernetesOptions{KubeConfig: "~/.kube/config"})
+	//client, err := k8s.NewKubernetesClient(&k8s.KubernetesOptions{KubeConfig: "~/.kube/config"})
+	client, err := k8s.NewKubernetesClient(&k8s.KubernetesOptions{KubeConfig: clientcmd.RecommendedHomeFile})
 	if err != nil {
 		return nil, err
 	}
