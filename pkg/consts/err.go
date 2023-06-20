@@ -10,9 +10,13 @@ const (
 
 // deployment api error code
 const (
-	ErrorGetDeployments   = 10100
-	ErrorCreateDeployment = 10101
+	ErrorGetDeployments          = 10100
+	ErrorCreateDeployment        = 10101
 	ErrorScaleReplicasDeployment = 10102
-	ErrorDeleteDeployment = 10103
-	ErrorGetDeployment = 10104
+	ErrorDeleteDeployment        = 10103
+	ErrorGetDeployment           = 10104
+)
+
+const (
+	EooroGetPodList = 10200
 )

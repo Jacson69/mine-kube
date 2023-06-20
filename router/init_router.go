@@ -21,4 +21,5 @@ func baseRouterV1() *gin.Engine {
 func addRouter(v1alpha1 *gin.RouterGroup) {
 	cluster.RegisterClusterRouter(v1alpha1)
 	core.RegisterDeploymentRouter(v1alpha1)
+	core.RegisterPodRouter(v1alpha1)
 }
