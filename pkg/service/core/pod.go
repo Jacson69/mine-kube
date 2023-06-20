@@ -7,6 +7,7 @@ import (
 	"mine-kube/pkg/client/k8s"
 	baseService "mine-kube/pkg/service"
 	"mine-kube/pkg/util"
+	"mine-kube/pkg/util/logger"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
@@ -54,6 +55,7 @@ func (ps *podService) GetPodList(namespace string, opts ...baseService.OpOption)
 }
 
 func (ps *podService) CreatePod(namespace string, podPost coreModels.PodPost) (*v1.Pod, error) {
+	logger.Info(podPost)
 	createPod := &v1.Pod{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: podPost.Name,

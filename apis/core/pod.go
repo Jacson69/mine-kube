@@ -7,6 +7,7 @@ import (
 	"mine-kube/pkg/consts"
 	"mine-kube/pkg/service"
 	podService "mine-kube/pkg/service/core"
+	"mine-kube/pkg/util/logger"
 )
 
 type Pod struct {
@@ -39,7 +40,7 @@ func createPod(p *Pod, c *gin.Context) {
 		p.Error(c, consts.ERRCREATECLUSTER, err, "")
 		return
 	}
-
+	logger.Info(podPost)
 	pod, err := p.ds.CreatePod(namespace, podPost)
 	if err != nil {
 		p.Error(c, consts.ErrorCreatePod, err, "")
