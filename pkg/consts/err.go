@@ -18,5 +18,6 @@ const (
 )
 
 const (
-	EooroGetPodList = 10200
+	ErrorGetPodList = 10200
+	ErrorCreatePod  = 10201
 )

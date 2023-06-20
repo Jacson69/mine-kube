@@ -46,7 +46,7 @@ func createDeployment(dc *Deployment, c *gin.Context) {
 		dc.Error(c, consts.ErrorCreateDeployment, err, "")
 		return
 	}
-	dc.OK(c, deployment, "dry-run deployment success")
+	dc.OK(c, deployment, "create deployment success")
 }
 
 func scaleReplicasDeployment(dc *Deployment, c *gin.Context) {

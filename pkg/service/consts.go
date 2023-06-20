@@ -2,7 +2,7 @@ package service
 
 const (
 	TempClusterFilePrefix = "kube-config"
-	DefaultConfigPath     = "/Users/wudianqiu/.kube/config"
+	DefaultConfigPath     = "/Users/Jacson/.kube/config"
 )
 
 const (

@@ -14,6 +14,6 @@ func RegisterPodRouter(v1alpha1 *gin.RouterGroup) {
 		return
 	}
 	v1alpha1.GET("/namespaces/:namespace/podList", podApi.GetPodList)
-	//v1alpha1.POST("/clusters/:clusterID/namespaces/:namespace/deployments", deploymentApi.DeploymentAction)
+	v1alpha1.POST("/namespaces/:namespace/pod", podApi.PodAction)
 	//v1alpha1.DELETE("/clusters/:clusterID/namespaces/:namespace/deployments/:deploymentID", deploymentApi.DeleteDeployment)
 }
