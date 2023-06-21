@@ -12,12 +12,14 @@ const (
 const (
 	ErrorGetDeployments          = 10100
 	ErrorCreateDeployment        = 10101
-	ErrorScaleReplicasDeployment = 10102
-	ErrorDeleteDeployment        = 10103
-	ErrorGetDeployment           = 10104
+	ErrorDeleteDeployment        = 10102
+	ErrorGetDeployment           = 10103
+	ErrorScaleReplicasDeployment = 10104
 )
 
 const (
 	ErrorGetPodList = 10200
 	ErrorCreatePod  = 10201
+	ErrorDeletePod  = 10202
+	ErrorGetPod     = 10203
 )

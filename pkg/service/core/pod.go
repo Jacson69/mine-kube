@@ -19,9 +19,10 @@ type PodInterface interface {
 	GetPodList(namespace string, opts ...baseService.OpOption) ([]v1.Pod, *int64, error)
 	//ScaleDeployment(clusterID string, namespace string, deploymentID string, replicas int32) error
 	//GetDeployments(clusterID string, namespace string, opts ...baseService.OpOption) ([]appsv1.Deployment, *int64, error)
-	//GetDeployment(clusterID string, namespace string, deploymentID string, opts ...baseService.OpOption) (*appsv1.Deployment, error)
+	GetPod(namespace string, podID string) (*v1.Pod, error)
 	CreatePod(namespace string, podPost coreModels.PodPost) (*v1.Pod, error)
-	//DryRunDeployment(clusterID string, namespace string, deploymentPost coreModels.DeploymentPost, opts ...baseService.OpOption) (*appsv1.Deployment, error)
+	DryRunPod(namespace string, podPost coreModels.PodPost) (*v1.Pod, error)
+	DeletePod(namespace string, podID string) error
 }
 
 func NewPod() (PodInterface, error) {
@@ -65,4 +66,33 @@ func (ps *podService) CreatePod(namespace string, podPost coreModels.PodPost) (*
 		return nil, err
 	}
 	return pod, nil
+}
+
+func (ps *podService) DryRunPod(namespace string, podPost coreModels.PodPost) (*v1.Pod, error) {
+	createPod := &v1.Pod{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      podPost.Name,
+			Namespace: namespace,
+		},
+		Spec: podPost.Spec,
+	}
+	pod, err := ps.client.CoreV1().Pods(namespace).Create(
+		ps.ctx,
+		createPod,
+		metav1.CreateOptions{
+			DryRun: []string{metav1.DryRunAll},
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return pod, nil
+}
+
+func (ps *podService) DeletePod(namespace string, podID string) error {
+	return ps.client.CoreV1().Pods(namespace).Delete(ps.ctx, podID, metav1.DeleteOptions{})
+}
+
+func (ps *podService) GetPod(namespace string, podID string) (*v1.Pod, error) {
+	return ps.client.CoreV1().Pods(namespace).Get(ps.ctx, podID, metav1.GetOptions{})
 }
