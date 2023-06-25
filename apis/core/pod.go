@@ -44,6 +44,7 @@ func createPod(p *Pod, c *gin.Context) {
 	pod, err := p.ds.CreatePod(namespace, podPost)
 	if err != nil {
 		p.Error(c, consts.ErrorCreatePod, err, "")
+		return
 	}
 	p.OK(c, pod, "create pod success")
 }
@@ -58,6 +59,7 @@ func dryRunPod(p *Pod, c *gin.Context) {
 	pod, err := p.ds.DryRunPod(namespace, podPost)
 	if err != nil {
 		p.Error(c, consts.ErrorCreatePod, err, "")
+		return
 	}
 	p.OK(c, pod, "dry-run pod success")
 }
