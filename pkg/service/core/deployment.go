@@ -95,7 +95,7 @@ func (ds *deploymentService) DryRunDeployment(
 		},
 		Spec: deploymentPost.Spec,
 	}
-	return clientSet.Kubernetes().AppsV1().Deployments("default").Create(
+	return clientSet.Kubernetes().AppsV1().Deployments(namespace).Create(
 		ds.ctx,
 		createDeployment,
 		metav1.CreateOptions{
@@ -115,7 +115,8 @@ func (ds *deploymentService) CreateDeployment(
 	}
 	createDeployment := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
-			Name: deploymentPost.Name,
+			Name:      deploymentPost.Name,
+			Namespace: namespace,
 		},
 		Spec: deploymentPost.Spec,
 	}

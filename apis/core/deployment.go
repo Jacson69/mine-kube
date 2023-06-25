@@ -57,12 +57,12 @@ func scaleReplicasDeployment(dc *Deployment, c *gin.Context) {
 		dc.Error(c, consts.ErrorScaleReplicasDeployment, err, "")
 		return
 	}
-	deployment, err := dc.ds.CreateDeployment(clusterID, namespace, deploymentPost)
+	err := dc.ds.ScaleDeployment(clusterID, namespace, deploymentPost.Name, deploymentPost.Replicas)
 	if err != nil {
 		dc.Error(c, consts.ErrorScaleReplicasDeployment, err, "")
 		return
 	}
-	dc.OK(c, deployment, fmt.Sprintf("relicas %d deployment success", deploymentPost.Replicas))
+	dc.OK(c, "", fmt.Sprintf("relicas %d deployment success", deploymentPost.Replicas))
 }
 
 func newDeploymentActionFunc() map[string]func(dc *Deployment, c *gin.Context) {
