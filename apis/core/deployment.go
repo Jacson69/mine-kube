@@ -52,7 +52,7 @@ func createDeployment(dc *Deployment, c *gin.Context) {
 func scaleReplicasDeployment(dc *Deployment, c *gin.Context) {
 	clusterID := c.Param("clusterID")
 	namespace := c.Param("namespace")
-	deploymentPost := core.DeploymentPost{}
+	deploymentPost := core.DeploymentScale{}
 	if err := c.ShouldBindJSON(&deploymentPost); err != nil {
 		dc.Error(c, consts.ErrorScaleReplicasDeployment, err, "")
 		return
