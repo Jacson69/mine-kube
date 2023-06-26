@@ -15,6 +15,6 @@ func RegisterNameSpaceRouter(v1alpha1 *gin.RouterGroup) {
 	}
 	v1alpha1.GET("/clusters/:clusterID/namespaces", namespaceApi.GetNamespaceList)
 	v1alpha1.POST("/clusters/:clusterID/namespace", namespaceApi.NamespaceAction)
-	v1alpha1.DELETE("/clusters/:clusterID/namespaces/:namespaceID", namespaceApi.DeleteNamespace)
+	v1alpha1.DELETE("/clusters/:clusterID/namespace/:namespaceID", namespaceApi.DeleteNamespace)
 	v1alpha1.GET("/clusters/:clusterID/namespaces/:namespaceID", namespaceApi.GetNamespace)
 }
