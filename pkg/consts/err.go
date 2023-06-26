@@ -30,3 +30,10 @@ const (
 	ErrorDeleteNamespace  = 10302
 	ErrorGetNamespace     = 10303
 )
+
+const (
+	ErrorGetConfigmapList = 10400
+	ErrorCreateConfigmap  = 10401
+	ErrorDeleteConfigmap  = 10402
+	ErrorGetConfigmap     = 10403
+)
