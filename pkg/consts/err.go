@@ -23,3 +23,10 @@ const (
 	ErrorDeletePod  = 10202
 	ErrorGetPod     = 10203
 )
+
+const (
+	ErrorGetNamespaceList = 10300
+	ErrorCreateNamespace  = 10301
+	ErrorDeleteNamespace  = 10302
+	ErrorGetNamespace     = 10303
+)

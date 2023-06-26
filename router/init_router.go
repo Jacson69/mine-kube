@@ -22,4 +22,5 @@ func addRouter(v1alpha1 *gin.RouterGroup) {
 	cluster.RegisterClusterRouter(v1alpha1)
 	core.RegisterDeploymentRouter(v1alpha1)
 	core.RegisterPodRouter(v1alpha1)
+	core.RegisterNameSpaceRouter(v1alpha1)
 }
