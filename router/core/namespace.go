@@ -13,8 +13,8 @@ func RegisterNameSpaceRouter(v1alpha1 *gin.RouterGroup) {
 		logger.Error(err)
 		return
 	}
-	v1alpha1.GET("/clusters/:clusterID/namespaces", namespaceApi.GetNamespaceList)
-	v1alpha1.POST("/clusters/:clusterID/namespace", namespaceApi.NamespaceAction)
-	v1alpha1.DELETE("/clusters/:clusterID/namespace/:namespaceID", namespaceApi.DeleteNamespace)
-	v1alpha1.GET("/clusters/:clusterID/namespaces/:namespaceID", namespaceApi.GetNamespace)
+	v1alpha1.GET("/clusters/:clusterID/resource/namespaces", namespaceApi.GetNamespaceList)
+	v1alpha1.POST("/clusters/:clusterID/resource/namespace", namespaceApi.NamespaceAction)
+	v1alpha1.DELETE("/clusters/:clusterID/resource/namespaces/:namespaceID", namespaceApi.DeleteNamespace)
+	v1alpha1.GET("/clusters/:clusterID/resource/namespaces/:namespaceID", namespaceApi.GetNamespace)
 }
