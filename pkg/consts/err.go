@@ -37,3 +37,10 @@ const (
 	ErrorDeleteConfigmap  = 10402
 	ErrorGetConfigmap     = 10403
 )
+
+const (
+	ErrorGetServiceList = 10500
+	ErrorCreateService  = 10501
+	ErrorDeleteService  = 10502
+	ErrorGetService     = 10503
+)
